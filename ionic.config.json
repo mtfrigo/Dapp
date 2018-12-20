@@ -1,0 +1,7 @@
+{
+  "name": "Dapp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
