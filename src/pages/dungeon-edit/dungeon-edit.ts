@@ -30,6 +30,10 @@ export class DungeonEditPage {
 
 
       this.dungeon = this.navParams.data.dungeon || {};
+
+      if(this.dungeon.active == null)
+        this.dungeon.active = 0;
+
       this.img = this.navParams.data.img;
       this.setupPageTitle();
       this.createForm();
@@ -46,6 +50,7 @@ export class DungeonEditPage {
       name: [this.dungeon.name, Validators.required],
       pic: [this.dungeon.pic, Validators.required],
       difficulty: [this.dungeon.difficulty, Validators.required],
+      active: [this.dungeon.active],
     });
   }
 

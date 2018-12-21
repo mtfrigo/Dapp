@@ -14,8 +14,6 @@ export class HomePage {
 
   constructor(public navCtrl: NavController) {
     this.pages = [
-      { title: 'Festa', component: 'FestaTabsPage' },
-      { title: 'Top', component: 'TopTabsPage'},
       { title: 'Administrção', component: 'AdmTabsPage'},
     ];
 

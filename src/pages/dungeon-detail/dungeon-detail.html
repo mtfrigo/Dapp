@@ -1,0 +1,35 @@
+<!--
+  Generated template for the DungeonDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <div class="dungeon-profile" text-center #pic [style.background-image]="'url(' + dungeon.pic + ')'">
+
+    </div>
+
+    <div class="dungeon-detail" padding>
+      <h2>{{dungeon.name}}</h2>
+      <p>{{dungeon.difficulty}}</p>
+      <button *ngIf=!dungeon.active ion-button round (click)="try(dungeon)">Begin try!</button>
+      <button *ngIf=dungeon.active ion-button round (click)="try(dungeon)">End try!</button>
+    </div>
+
+    <ion-fab bottom right>
+      <button ion-fab color="secondary" (click)="newTry()">
+        <ion-icon name="beer"></ion-icon>
+      </button>
+    </ion-fab>
+
+</ion-content>

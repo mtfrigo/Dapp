@@ -35,6 +35,10 @@ export class DungeonsPage {
     this.navCtrl.push('DungeonEditPage');
   }
 
+  viewDungeon(dungeon) {
+    this.navCtrl.push('DungeonDetailPage',  { dungeon: dungeon});
+  }
+
   editDungeon(dungeon: any) {
     this.navCtrl.push('DungeonEditPage', { dungeon: dungeon, img:  this.getDungeonPic(dungeon)});
   }

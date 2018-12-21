@@ -9,7 +9,7 @@ import { IonicPage, NavController, NavParams, Tabs } from 'ionic-angular';
 export class AdmTabsPage {
   @ViewChild('myTabs') tabRef: Tabs;
 
-  tab1 = 'ManagePage';
+  tab1 = 'DungeonsPage';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

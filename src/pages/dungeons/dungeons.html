@@ -14,9 +14,11 @@
 
     <ion-list>
 
-      <ion-item-sliding *ngFor="let dungeon of dungeons | async">
 
-        <ion-item>
+
+      <ion-item-sliding  *ngFor="let dungeon of dungeons | async">
+
+        <ion-item (click)=viewDungeon(dungeon)>
           <ion-avatar item-start>
               <img [src]=dungeon.pic>
           </ion-avatar>
@@ -43,4 +45,6 @@
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-fab>
+
+
 </ion-content>
