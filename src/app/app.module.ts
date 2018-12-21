@@ -10,6 +10,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { Items } from '../mocks/providers/items';
+import { Dungeons } from '../mocks/providers/dungeons';
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
 
@@ -58,13 +59,14 @@ export function provideSettings(storage: Storage) {
   providers: [
     Api,
     Items,
+    Dungeons,
     User,
     Camera,
     SplashScreen,
     StatusBar,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
   ]
 })
 export class AppModule { }
