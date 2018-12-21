@@ -1,0 +1,113 @@
+<!--
+  Generated template for the ListaComprasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Cestinha de compras</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding *ngIf="compras && evento">
+
+    <ion-list-header no-lines no-padding>
+        <!-- Toggle Button -->
+
+        <ion-list>
+          <ion-item item-end>
+            <ion-grid>
+              <ion-row>
+
+                <ion-col>
+                    <p outline text-center class="totalText">Pagantes</p>
+                    <p outline text-center class="total">
+                        {{ evento.pessoas ? (evento.pessoas | contaPagantes:true) : 0}}
+                    </p>
+                </ion-col>
+
+                <ion-col>
+                    <p outline text-center class="totalText">Total</p>
+                    <p outline text-center class="total">{{ total | currency:"BRL":true:"1.2" }}</p>
+                </ion-col>
+
+                <ion-col>
+                    <p outline text-center class="totalText">Cada</p>
+                    <p outline text-center class="total">{{ total / (evento.pessoas ? (evento.pessoas | contaPagantes:true) : 1) | currency:"BRL":true:"1.2" }}</p>
+                </ion-col>
+
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-list>
+
+    </ion-list-header>
+
+    <button ion-button icon-start full small (click)="salvarLista()">
+      <ion-icon name="basket"></ion-icon>
+      <div>Salvar lista de compras</div>
+    </button>
+
+  <ion-list class="accordion-list">
+
+    <!-- First Level -->
+    <ion-list-header *ngFor="let categoria of compras; let i = index" no-lines no-padding>
+      <!-- Toggle Button -->
+      <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': categoria.open, 'section': !categoria.open}">
+        <ion-icon item-left name="arrow-forward" *ngIf="!categoria.open"></ion-icon>
+        <ion-icon item-left name="arrow-down" *ngIf="categoria.open"></ion-icon>
+          {{ categoria.nome }}
+      </button>
+
+      <ion-list *ngIf="categoria.items && categoria.open">
+        <!-- Second Level -->
+        <ion-list-header *ngFor="let item of categoria.items; let j = index" no-padding>
+          <!-- Toggle Button -->
+
+          <ion-list>
+          <ion-item *ngIf="item" ion-item class="child-item" text-wrap>
+
+            <img  width="40" height="40" item-start [src]="getItemImg(item)"/>
+
+            <h2>{{ item.nome }}</h2>
+            <p text-lowercase>{{ item.categoria }}</p>
+
+
+            <div item-end margin-right>
+              <p outline margin-right (click)="changePreco(item)">{{ item.preco | currency:"BRL":true:"1.2" }}</p>
+              <p outline margin-right>{{ item.preco*item.qtd  | currency:"BRL":true:"1.2"}}</p>
+            </div>
+
+            <button ion-button item-end green (click)="modifyItem(item, 'remove')"><ion-icon name="remove"></ion-icon></button>
+            <button ion-button outline clear item-end >{{ item.qtd }}</button>
+            <button ion-button item-end (click)="modifyItem(item, 'add')"><ion-icon name="add"></ion-icon></button>
+
+          </ion-item>
+          <!-- Direct Add Button as Fallback -->
+
+          </ion-list>
+
+        </ion-list-header>
+
+
+      </ion-list>
+
+
+    </ion-list-header>
+
+
+  </ion-list>
+
+
+
+    <ion-fab bottom right>
+      <button ion-fab color="primary" (click)="newItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-fab>
+
+</ion-content>

@@ -1,0 +1,64 @@
+<!--
+  Generated template for the MatchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="vermelho">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Match</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content height="100%" padding>
+
+  <div class="oi">
+
+  <ion-grid allign-center *ngIf="match">
+    <ion-row>
+      <ion-col>
+        <ion-item no-lines>
+          <ion-avatar item-start>
+            <img [src]="getPessoaPhoto(0)">
+          </ion-avatar>
+          <h2>{{ match[0].nome }}</h2>
+        </ion-item>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col text-center>
+        <img src="https://http2.mlstatic.com/anjo-cupido-anjo-do-amor-parede-vidros-D_NQ_NP_664453-MLB26613628400_012018-F.jpg" width=100px  alt="">
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col >
+          <ion-item no-lines>
+            <h2 text-end>{{ match[1].nome }}</h2>
+            <ion-avatar class="item-avatar" item-end>
+              <img [src]="getPessoaPhoto(1)">
+            </ion-avatar>
+          </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+        <ion-col >
+            <button ion-button full round color="danger" (click)=newMatch(pessoas)>New match </button>
+        </ion-col>
+      </ion-row>
+
+  </ion-grid>
+  </div>
+
+
+
+
+</ion-content>

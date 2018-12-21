@@ -1,0 +1,45 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Muda Preço</ion-title>
+    </ion-navbar>
+
+  </ion-header>
+
+
+  <ion-content padding>
+
+
+    <ion-row>
+        <ion-col>
+          <ion-list inset>
+            <ion-item>
+              {{item.nome}}
+            </ion-item>
+          </ion-list>
+        </ion-col>
+
+        <ion-col>
+          <ion-list inset>
+            <ion-item>
+              {{item.preco | currency:"BRL":true:"1.2"}}
+            </ion-item>
+          </ion-list>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list inset>
+          <ion-item>
+            <ion-input placeholder="Novo preço" type="text" #preco></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button full class="submit-btn" (click)="mandaPreco(preco.value)" type="submit">Mudar
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-content>

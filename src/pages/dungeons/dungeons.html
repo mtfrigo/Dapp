@@ -1,0 +1,46 @@
+
+<ion-header>
+  <ion-navbar color="preto">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Dungeons
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-list>
+
+      <ion-item-sliding *ngFor="let dungeon of dungeons | async">
+
+        <ion-item>
+          <ion-avatar item-start>
+              <img [src]=dungeon.pic>
+          </ion-avatar>
+          <h2>{{ dungeon.name }}</h2>
+          <p>{{ dungeon.difficulty }}</p>
+        </ion-item>
+
+        <ion-item-options side="right">
+
+          <button ion-button color="secondary" (click)="editDungeon(dungeon)">
+            <ion-icon name="create"></ion-icon>
+          </button>
+
+          <button ion-button color="danger" (click)="removeDungeon(dungeon.key)">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+    <ion-fab bottom right>
+      <button ion-fab color="primary" (click)="newDungeon()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-fab>
+</ion-content>

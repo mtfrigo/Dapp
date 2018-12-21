@@ -1,0 +1,58 @@
+<!--
+  Generated template for the ListaConvidadosPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Lista de Convidados</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content *ngIf= "evento && evento.pessoas && convidados && naoConvidados" margin-vertical padding>
+
+    <ion-list margin-top>
+
+        <button ion-button icon-start full small (click)="salvarLista(convidados)">
+            <ion-icon name="contacts"></ion-icon>
+            <div>Salvar lista de convidados</div>
+          </button>
+
+
+      <ion-item-divider color="light">Convidados<ion-badge item-end>{{convidados.length}}</ion-badge></ion-item-divider>
+
+      <ion-item *ngFor="let convidado of convidados">
+          <ion-avatar   item-start>
+              <img [src]=getPessoaPhoto(convidado)>
+          </ion-avatar>
+
+          <ion-label>{{ convidado.nome }}</ion-label>
+
+          <ion-toggle [(ngModel)]="convidado.bebe" item-end ></ion-toggle>
+
+          <ion-icon (click)="removeConvidado(convidado)" item-end name="arrow-round-down"></ion-icon>
+      </ion-item>
+
+      <ion-item-divider color="light">Pessoas<ion-badge item-end>{{naoConvidados.length}}</ion-badge></ion-item-divider>
+
+
+      <ion-item *ngFor="let pessoa of naoConvidados">
+        <ion-avatar item-start>
+            <img [src]=getPessoaPhoto(pessoa)>
+        </ion-avatar>
+        <h2>{{ pessoa.nome }}</h2>
+        <p>{{ pessoa.facebookId }}</p>
+        <ion-icon  (click)="addConvidado(pessoa)" item-end name="arrow-round-up"></ion-icon>
+      </ion-item>
+
+    </ion-list>
+
+
+
+
+
+</ion-content>

@@ -1,0 +1,15 @@
+page-foto {
+
+  ion-content{
+    height: 100%;
+
+  }
+
+  .fotos-iframe{
+    height:100%;
+
+    display: flex;
+    align-items: center;
+    flex-flow: column
+  }
+}

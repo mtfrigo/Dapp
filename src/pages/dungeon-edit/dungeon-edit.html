@@ -1,0 +1,57 @@
+
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <form [formGroup]="form">
+
+        <ion-item>
+          <ion-avatar item-start>
+              <img [src]=img>
+          </ion-avatar>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Imagem</ion-label>
+          <ion-input type="text" formControlName="pic"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!form.controls.pic.valid && (form.controls.pic.dirty || form.controls.pic.touched)" color="danger">
+          <div [hidden]="!form.controls.pic.errors.required">
+            O campo é obrigatório
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Name</ion-label>
+          <ion-input type="text" formControlName="name"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!form.controls.name.valid && (form.controls.name.dirty || form.controls.name.touched)" color="danger">
+          <div [hidden]="!form.controls.name.errors.required">
+            O campo é obrigatório
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Difficulty</ion-label>
+          <ion-input type="text" formControlName="difficulty"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!form.controls.difficulty.valid && (form.controls.difficulty.dirty || form.controls.difficulty.touched)" color="danger">
+          <div [hidden]="!form.controls.difficulty.errors.required">
+            O campo é obrigatório
+          </div>
+        </ion-item>
+
+        <div padding>
+          <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()">Salvar</button>
+        </div>
+      </form>
+</ion-content>

@@ -1,0 +1,47 @@
+
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-title>
+        {{title}}
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content padding>
+
+
+      <form [formGroup]="form">
+
+          <ion-item>
+            <ion-avatar item-start>
+                <img [src]=img>
+            </ion-avatar>
+          </ion-item>
+
+          <ion-item>
+            <ion-label stacked>Nome</ion-label>
+            <ion-input type="text" formControlName="nome"></ion-input>
+          </ion-item>
+
+          <ion-item *ngIf="!form.controls.nome.valid && (form.controls.nome.dirty || form.controls.nome.touched)" color="danger">
+            <div [hidden]="!form.controls.nome.errors.required">
+              O campo é obrigatório
+            </div>
+          </ion-item>
+
+          <ion-item>
+            <ion-label stacked>Facebook ID</ion-label>
+            <ion-input type="text" formControlName="facebookId"></ion-input>
+          </ion-item>
+
+          <ion-item *ngIf="!form.controls.facebookId.valid && (form.controls.facebookId.dirty || form.controls.facebookId.touched)" color="danger">
+            <div [hidden]="!form.controls.facebookId.errors.required">
+              O campo é obrigatório
+            </div>
+          </ion-item>
+
+          <div padding>
+            <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()">Salvar</button>
+          </div>
+        </form>
+  </ion-content>

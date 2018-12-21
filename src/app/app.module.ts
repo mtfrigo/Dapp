@@ -1,72 +1,77 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Camera } from '@ionic-native/camera';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
-import { IonicStorageModule, Storage } from '@ionic/storage';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
-import { Items } from '../mocks/providers/items';
-import { Dungeons } from '../mocks/providers/dungeons';
-import { Settings, User, Api } from '../providers';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-// The translate loader needs to know where to load i18n files
-// in Ionic's static asset pipeline.
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
-export function provideSettings(storage: Storage) {
-  /**
-   * The Settings provider takes a set of default settings for your app.
-   *
-   * You can add new settings options at any time. Once the settings are saved,
-   * these values will not overwrite the saved values (this can be done manually if desired).
-   */
-  return new Settings(storage, {
-    option1: true,
-    option2: 'Ionitron J. Framework',
-    option3: '3',
-    option4: 'Hello'
-  });
-}
+import { AboutPage } from '../pages/about/about';
+import { ContactPage } from '../pages/contact/contact';
+import { HomePage } from '../pages/home/home';
+import { TabsPage } from '../pages/tabs/tabs';
+import { ManagePage } from '../pages/manage/manage';
+
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+
+import { HttpModule } from '@angular/http';
+import { MudaPrecoPage } from '../pages/muda-preco/muda-preco';
+import { NovoItemPage } from '../pages/novo-item/novo-item';
+
+import { PessoasProvider } from '../providers/pessoas/pessoas';
+import { EventosProvider } from '../providers/eventos/eventos';
+import { PipesModule } from '../pipes/pipes.module';
+import { ComprasProvider } from '../providers/compras/compras';
+import { DungeonsProvider } from '../providers/dungeons/dungeons';
+
+
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
+    AboutPage,
+    ContactPage,
+    HomePage,
+    MudaPrecoPage,
+    NovoItemPage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
-      }
-    }),
+    HttpModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    PipesModule,
+
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyC78TrhyDu2zvMmaWhBdfUXzOFChzXFLdk",
+    authDomain: "dapp-1407.firebaseapp.com",
+    databaseURL: "https://dapp-1407.firebaseio.com",
+    projectId: "dapp-1407",
+    storageBucket: "dapp-1407.appspot.com",
+    messagingSenderId: "1064341481713"
+    }),
+    AngularFireDatabaseModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    MyApp,
+    AboutPage,
+    ContactPage,
+    HomePage,
+    MudaPrecoPage,
+    NovoItemPage,
+    TabsPage
   ],
   providers: [
-    Api,
-    Items,
-    Dungeons,
-    User,
-    Camera,
-    SplashScreen,
     StatusBar,
-    { provide: Settings, useFactory: provideSettings, deps: [Storage] },
-    // Keep this to enable Ionic's runtime error handling during development
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    SplashScreen,
+    PessoasProvider,
+    EventosProvider,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    EventosProvider,
+    ComprasProvider,
+    DungeonsProvider,
   ]
 })
-export class AppModule { }
+export class AppModule {}
