@@ -1,13 +1,6 @@
-# CDB
-App da cdb
+# Dofus
 
-
-Instal Facebook Plugin
-
-```
-ionic cordova plugin add cordova-plugin-facebook4 --variable APP_ID="258465081507402" --variable APP_NAME="cdb-app"
-npm install --save @ionic-native/facebook
-```
+App de Dofus
 
 Install AngularFire2 plugin
 
