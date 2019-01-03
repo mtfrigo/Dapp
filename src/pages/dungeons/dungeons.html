@@ -13,12 +13,9 @@
 <ion-content padding>
 
     <ion-list>
-
-
-
       <ion-item-sliding  *ngFor="let dungeon of dungeons | async">
 
-        <ion-item (click)=viewDungeon(dungeon)>
+        <ion-item (click)=viewDungeon(dungeon) [ngClass]="dungeon.active ?'running':'notRunning'">
           <ion-avatar item-start>
               <img [src]=dungeon.pic>
           </ion-avatar>

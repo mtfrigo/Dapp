@@ -13,7 +13,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content no-padding>
 
     <div class="dungeon-profile" text-center #pic [style.background-image]="'url(' + dungeon.pic + ')'">
 
@@ -22,8 +22,8 @@
     <div class="dungeon-detail" padding>
       <h2>{{dungeon.name}}</h2>
       <p>{{dungeon.difficulty}}</p>
-      <button *ngIf=!dungeon.active ion-button round (click)="try(dungeon)">Begin try!</button>
-      <button *ngIf=dungeon.active ion-button round (click)="try(dungeon)">End try!</button>
+      <button *ngIf=!dungeon.active full ion-button round (click)="try(dungeon)">Begin try!</button>
+      <button *ngIf=dungeon.active full ion-button round (click)="try(dungeon)">End try!</button>
     </div>
 
     <ion-fab bottom right>

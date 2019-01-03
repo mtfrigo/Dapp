@@ -15,6 +15,7 @@ import { HttpModule } from '@angular/http';
 
 import { PipesModule } from '../pipes/pipes.module';
 import { DungeonsProvider } from '../providers/dungeons/dungeons';
+import { RaidsProvider } from '../providers/raids/raids';
 
 
 
@@ -49,6 +50,7 @@ import { DungeonsProvider } from '../providers/dungeons/dungeons';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DungeonsProvider,
+    RaidsProvider,
   ]
 })
 export class AppModule {}
