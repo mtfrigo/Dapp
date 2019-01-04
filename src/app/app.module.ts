@@ -6,6 +6,8 @@ import { MyApp } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
+import { ComponentsModule } from '../components/components.module';
+
 import { HomePage } from '../pages/home/home';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -29,6 +31,7 @@ import { RaidsProvider } from '../providers/raids/raids';
     HttpModule,
     IonicModule.forRoot(MyApp),
     PipesModule,
+    ComponentsModule,
 
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyC78TrhyDu2zvMmaWhBdfUXzOFChzXFLdk",

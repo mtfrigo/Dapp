@@ -40,7 +40,8 @@ export class DungeonsProvider {
             difficulty: dungeon.difficulty,
             pic: dungeon.pic,
             active: dungeon.active,
-            raidKey: dungeon.raidKey ? dungeon.raidKey : 'none' })
+            raidKey: dungeon.raidKey ? dungeon.raidKey : 'none',
+            lastRaid: dungeon.lastRaid ? dungeon.lastRaid : 'none' })
           .then(() => resolve())
           .catch((e) => reject(e));
       } else {

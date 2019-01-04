@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { DungeonDetailPage } from './dungeon-detail';
+import { RaidHistoryPage } from './raid-history';
 import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   declarations: [
-    DungeonDetailPage,
+    RaidHistoryPage,
   ],
   imports: [
-    IonicPageModule.forChild(DungeonDetailPage),
-    ComponentsModule
+    IonicPageModule.forChild(RaidHistoryPage),
+    ComponentsModule,
   ],
 })
-export class DungeonDetailPageModule {}
+export class RaidHistoryPageModule {}

@@ -36,12 +36,13 @@ export class RaidsProvider {
     return new Promise((resolve, reject) => {
       if (raid.key) {
         this.db.list(this.PATH)
-          .update(raid.key, { name: raid.name, begin: raid.begin, end: raid.end, active: raid.active })
+          .update(raid.key, { name: raid.name, begin: raid.begin, end: raid.end, active: raid.active,
+            bunchOfKeys: raid.bunchOfKeys })
           .then(() => resolve())
           .catch((e) => reject(e));
       } else {
         this.db.list(this.PATH)
-          .push({ name: raid.name, begin: raid.begin, end: "In progress", active: raid.active })
+          .push({ name: raid.name, begin: raid.begin, end: "In progress", active: raid.active, bunchOfKeys: raid.bunchOfKeys  })
           //.then(() => resolve());
           .then((result: any) => resolve(result.key));
       }

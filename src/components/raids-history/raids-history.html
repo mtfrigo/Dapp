@@ -1,0 +1,26 @@
+<!-- Generated template for the RaidsHistoryComponent component -->
+<div *ngIf=name>
+  <ion-list>
+
+      <ion-list>
+          <ion-item-sliding  *ngFor="let raid of raids | async">
+            <ion-item  *ngIf="((raid.name == name && raid.active == false)  || (name == 'none')) ">
+                <h2>{{ raid.name }}</h2>
+                <p>{{ raid.begin }}</p>
+            </ion-item>
+
+            <ion-item-options side="right">
+
+              <button ion-button color="danger" (click)="removeRaid(raid.key)">
+                <ion-icon name="trash"></ion-icon>
+              </button>
+
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+
+
+
+
+  </ion-list>
+</div>

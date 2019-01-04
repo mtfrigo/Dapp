@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 
 import { Observable } from 'rxjs/Observable';
 import { DungeonsProvider } from '../../providers/dungeons/dungeons';
+import { RaidsProvider } from '../../providers/raids/raids';
 /**
  * Generated class for the DungeonsPage page.
  *
@@ -22,6 +23,7 @@ export class DungeonsPage {
 
   constructor(public navCtrl: NavController,
     private dungeonsProvider: DungeonsProvider,
+    private raidsProvider: RaidsProvider,
     private toast: ToastController) {
 
     this.dungeons = this.dungeonsProvider.getAll();
@@ -61,4 +63,60 @@ export class DungeonsPage {
     return url;
   }
 
+  endRaid(dungeon)
+  {
+
+    let raidKey;
+
+    this.raidsProvider.get(dungeon.raidKey)
+      .subscribe((raid) => {
+        raid['end'] = this.getNowTime();
+        raid['active'] = false;
+        raidKey = raid.key;
+
+        this.raidsProvider.save(raid);
+
+        dungeon.active = false;
+        dungeon.raidKey = 'none';
+        dungeon.lastRaid = raid['begin'];
+
+        this.dungeonsProvider.save(dungeon);
+
+      });
+  }
+
+  getNowTime()
+  {
+    var date = new Date();
+    let datetext = date.toTimeString();
+    datetext = datetext.split(' ')[0];
+
+    return date.getDate() + '/' + (date.getMonth()  + 1) + '/' +  date.getFullYear() +" "+ datetext;
+  }
+
+  getLastRaid(dungeon)
+  {
+    if(dungeon.lastRaid && dungeon.lastRaid != "none")
+      return dungeon.lastRaid
+  }
+
+  bunchOfKeysUnlocked(dungeon)
+  {
+
+    let date = dungeon.lastRaid;
+
+    let splitedRaw = date.split(' ');
+    let splitedDate = splitedRaw[0].split('/');
+
+    let formatedDate = splitedDate[2] + "/" + splitedDate[1] + "/" + splitedDate[0];
+
+    var firstDay = new Date(formatedDate);
+    var nextWeek = new Date(firstDay.getTime() + 7 * 24 * 60 * 60 * 1000);
+
+    let datetext = nextWeek.toTimeString();
+    datetext = datetext.split(' ')[0];
+
+    return nextWeek.getDate() + '/' + (nextWeek.getMonth()  + 1) + '/' +  nextWeek.getFullYear() +" "+ splitedRaw[1];
+
+  }
 }

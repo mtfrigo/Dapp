@@ -32,29 +32,6 @@ export class DungeonDetailPage {
     console.log('ionViewDidLoad DungeonDetailPage');
   }
 
-  try(dungeon)
-  {
-    this.dungeon.active = !this.dungeon.active;
-
-    if(this.dungeon.active == true)
-      this.createRaid();
-    else
-      this.endRaid();
-
-    this.dungeonsProvider.save(this.dungeon)
-    // .then(() => {
-    //   this.toast.create({ message: 'New try created!', duration: 3000}).present();
-    //   //this.navCtrl.pop();
-    // })
-    // .catch((e) => {
-    //   this.toast.create({ message: 'Error creating new try!', duration: 3000}).present();
-    //   console.error(e);
-    // })
-
-
-
-  }
-
   getNowTime()
   {
     var date = new Date();
@@ -64,17 +41,14 @@ export class DungeonDetailPage {
     return date.getDate() + '/' + (date.getMonth()  + 1) + '/' +  date.getFullYear() +" "+ datetext;
   }
 
-  createRaid()
+  createRaid(bunchOfKeys)
   {
-
-
-
-
     let raid = {};
 
     raid['name'] = this.dungeon.name;
     raid['begin'] = this.getNowTime();
     raid['active'] = true;
+    raid['bunchOfKeys'] = bunchOfKeys;
 
     this.raidsProvider.save(raid).then((result: any) => {
 
@@ -90,22 +64,28 @@ export class DungeonDetailPage {
   endRaid()
   {
 
-    let raid = this.raidsProvider.get(this.dungeon.raidKey)
-      .subscribe((raid) => {
-        console.log(raid);
+    let raidKey;
 
+    this.raidsProvider.get(this.dungeon.raidKey)
+      .subscribe((raid) => {
         raid['end'] = this.getNowTime();
         raid['active'] = false;
+        raidKey = raid.key;
+
+        console.log(raid)
 
         this.raidsProvider.save(raid);
+
+        this.dungeon.active = false;
+        this.dungeon.raidKey = 'none';
+
+
+        if(raid['bunchOfKeys'])
+          this.dungeon.lastRaid = raid['begin'];
+
+        this.dungeonsProvider.save(this.dungeon);
+
       });
-
-    this.dungeon.active = false;
-    this.dungeon.raidKey = 'none';
-
-    this.dungeonsProvider.save(this.dungeon);
-
-
   }
 
 }
