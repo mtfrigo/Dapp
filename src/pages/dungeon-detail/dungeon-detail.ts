@@ -19,6 +19,7 @@ export class DungeonDetailPage {
 
   dungeon: any;
   raid: any = {};
+  raidKey: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private dungeonsProvider: DungeonsProvider,
@@ -66,44 +67,44 @@ export class DungeonDetailPage {
   createRaid()
   {
 
+
+
+
     let raid = {};
 
     raid['name'] = this.dungeon.name;
     raid['begin'] = this.getNowTime();
     raid['active'] = true;
 
-    console.log(raid);
-    this.raidsProvider.save(raid);
+    this.raidsProvider.save(raid).then((result: any) => {
+
+      this.dungeon.active = true;
+      this.dungeon.raidKey = result;
+
+      this.dungeonsProvider.save(this.dungeon);
+
+    });
+
   }
 
   endRaid()
   {
-    console.log("entrou end")
-    let raids;
-    let raid = {};
 
-
-    this.raidsProvider.getAll()
-      .subscribe(response => {
-
-        console.log(response);
-
-        response.forEach(el => {
-
-          if((el['name'] ==  this.dungeon.name) && el['active'] == true)
-            raid = el;
-
-        });
-
+    let raid = this.raidsProvider.get(this.dungeon.raidKey)
+      .subscribe((raid) => {
         console.log(raid);
 
-        //raid['end'] = this.getNowTime();
-        //raid['active'] = false;
+        raid['end'] = this.getNowTime();
+        raid['active'] = false;
 
-        //console.log(raid);
-
-
+        this.raidsProvider.save(raid);
       });
+
+    this.dungeon.active = false;
+    this.dungeon.raidKey = 'none';
+
+    this.dungeonsProvider.save(this.dungeon);
+
 
   }
 

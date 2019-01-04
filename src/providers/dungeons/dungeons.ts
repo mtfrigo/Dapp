@@ -36,12 +36,19 @@ export class DungeonsProvider {
     return new Promise((resolve, reject) => {
       if (dungeon.key) {
         this.db.list(this.PATH)
-          .update(dungeon.key, { name: dungeon.name, difficulty: dungeon.difficulty, pic: dungeon.pic, active: dungeon.active })
+          .update(dungeon.key, { name: dungeon.name,
+            difficulty: dungeon.difficulty,
+            pic: dungeon.pic,
+            active: dungeon.active,
+            raidKey: dungeon.raidKey ? dungeon.raidKey : 'none' })
           .then(() => resolve())
           .catch((e) => reject(e));
       } else {
         this.db.list(this.PATH)
-          .push({ name: dungeon.name, difficulty: dungeon.difficulty, pic: dungeon.pic, active: dungeon.active })
+          .push({ name: dungeon.name,
+            difficulty: dungeon.difficulty,
+            pic: dungeon.pic,
+            active: dungeon.active})
           .then(() => resolve());
           //.then((result: any) => resolve(result.key));
       }
