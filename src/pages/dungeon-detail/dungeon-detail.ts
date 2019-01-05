@@ -64,15 +64,10 @@ export class DungeonDetailPage {
   endRaid()
   {
 
-    let raidKey;
-
     this.raidsProvider.get(this.dungeon.raidKey)
       .subscribe((raid) => {
         raid['end'] = this.getNowTime();
         raid['active'] = false;
-        raidKey = raid.key;
-
-        console.log(raid)
 
         this.raidsProvider.save(raid);
 

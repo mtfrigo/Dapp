@@ -66,19 +66,18 @@ export class DungeonsPage {
   endRaid(dungeon)
   {
 
-    let raidKey;
-
     this.raidsProvider.get(dungeon.raidKey)
       .subscribe((raid) => {
         raid['end'] = this.getNowTime();
         raid['active'] = false;
-        raidKey = raid.key;
 
         this.raidsProvider.save(raid);
 
         dungeon.active = false;
         dungeon.raidKey = 'none';
-        dungeon.lastRaid = raid['begin'];
+
+        if(raid['bunchOfKeys'])
+          dungeon.lastRaid = raid['begin'];
 
         this.dungeonsProvider.save(dungeon);
 

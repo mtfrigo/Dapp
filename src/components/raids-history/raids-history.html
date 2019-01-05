@@ -6,7 +6,9 @@
           <ion-item-sliding  *ngFor="let raid of raids | async">
             <ion-item  *ngIf="((raid.name == name && raid.active == false)  || (name == 'none')) ">
                 <h2>{{ raid.name }}</h2>
-                <p>{{ raid.begin }}</p>
+                <p>Begin: {{ raid.begin }}</p>
+                <p>End: {{ raid.end }}</p>
+                <p>Duration: {{ getDuration(raid) }}</p>
             </ion-item>
 
             <ion-item-options side="right">
