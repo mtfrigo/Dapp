@@ -7,4 +7,15 @@ page-dungeons {
   .notRunning {
     background-color: white;
   }
+
+  .bunchLocked {
+    opacity: 0.1;
+
+  }
+
+  .bunchUnlocked {
+
+    opacity: 1;
+
+  }
 }

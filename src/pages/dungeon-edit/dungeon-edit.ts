@@ -48,6 +48,8 @@ export class DungeonEditPage {
     this.form = this.formBuilder.group({
       key: [this.dungeon.key],
       name: [this.dungeon.name, Validators.required],
+      level: [this.dungeon.level, Validators.required],
+      coord: [this.dungeon.coord, Validators.required],
       pic: [this.dungeon.pic, Validators.required],
       difficulty: [this.dungeon.difficulty, Validators.required],
       active: [this.dungeon.active],

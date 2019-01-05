@@ -100,23 +100,51 @@ export class DungeonsPage {
       return dungeon.lastRaid
   }
 
-  bunchOfKeysUnlocked(dungeon)
+  convertToDateDefault(date)
   {
-
-    let date = dungeon.lastRaid;
 
     let splitedRaw = date.split(' ');
     let splitedDate = splitedRaw[0].split('/');
 
-    let formatedDate = splitedDate[2] + "/" + splitedDate[1] + "/" + splitedDate[0];
+    return splitedDate[2] + "/" + splitedDate[1] + "/" + splitedDate[0] + " " + splitedRaw[1];
+  }
 
+  bunchOfKeysUnlocked(dungeon)
+  {
+
+    if(!dungeon.lastRaid || dungeon.lastRaid == "none")
+      return true;
+
+    //LAST RAID TIME
+    let formatedDate = this.convertToDateDefault(dungeon.lastRaid);
+
+    //NOW TIME
+    let formatedDateNow = this.convertToDateDefault(this.getNowTime());
+
+    let now = new Date(formatedDateNow);
+
+    //NEXT WEEK TIME
+    var firstDay = new Date(formatedDate);
+    var nextWeek = new Date(firstDay.getTime() + 7 * 24 * 60 * 60 * 1000);
+
+    return now >= nextWeek;
+
+  }
+
+  getBunchUnlockDate(dungeon)
+  {
+
+    //LAST RAID TIME
+    let formatedDate = this.convertToDateDefault(dungeon.lastRaid);
+
+    //NEXT WEEK TIME
     var firstDay = new Date(formatedDate);
     var nextWeek = new Date(firstDay.getTime() + 7 * 24 * 60 * 60 * 1000);
 
     let datetext = nextWeek.toTimeString();
     datetext = datetext.split(' ')[0];
 
-    return nextWeek.getDate() + '/' + (nextWeek.getMonth()  + 1) + '/' +  nextWeek.getFullYear() +" "+ splitedRaw[1];
+    return nextWeek.getDate() + '/' + (nextWeek.getMonth()  + 1) + '/' +  nextWeek.getFullYear() +" "+ datetext;
 
   }
 }

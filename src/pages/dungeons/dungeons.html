@@ -13,15 +13,22 @@
 <ion-content padding>
 
     <ion-list>
-      <ion-item-sliding  *ngFor="let dungeon of dungeons | async">
+      <ion-item-sliding  *ngFor="let dungeon of (dungeons | async)?.reverse()">
 
         <ion-item (click)=viewDungeon(dungeon) [ngClass]="dungeon.active ?'running':'notRunning'">
+
           <ion-avatar item-start>
               <img [src]=dungeon.pic>
           </ion-avatar>
+
           <h2>{{ dungeon.name }}</h2>
           <p>{{ dungeon.difficulty }}</p>
-          <p *ngIf="dungeon.lastRaid && dungeon.lastRaid != 'none'">{{ getLastRaid(dungeon)}} {{bunchOfKeysUnlocked(dungeon)}}</p>
+
+          <div item-end text-center>
+              <img  src="/assets/imgs/molho.png" width=30px height=30px [ngClass]="bunchOfKeysUnlocked(dungeon) ? 'bunchUnlocked' : 'bunchLocked'"/>
+              <p *ngIf="dungeon.lastRaid && dungeon.lastRaid != 'none'">{{getBunchUnlockDate(dungeon)}}</p>
+
+          </div>
 
           <button *ngIf = "dungeon.active" item-right ion-button color="primary" (click)="endRaid(dungeon)">
             <ion-icon name="checkbox-outline"></ion-icon>

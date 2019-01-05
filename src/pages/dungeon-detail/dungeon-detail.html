@@ -20,8 +20,12 @@
     </div>
 
     <div class="dungeon-detail" padding>
-      <h2>{{dungeon.name}}</h2>
-      <p>{{dungeon.difficulty}}</p>
+      <h2 text-center>{{dungeon.name}}</h2>
+      <div class='title'>Difficulty: <span class='value'>{{dungeon.difficulty}}</span></div>
+      <div class='title'>Level: <span class='value'>{{dungeon.level}}</span></div>
+      <div class='title'>Coords: <span class='value'>{{dungeon.coord}}</span></div>
+
+
       <button *ngIf=!dungeon.active full ion-button round (click)="createRaid(true)">Begin raid with Bunch Of Keys!</button>
       <button *ngIf=!dungeon.active full ion-button round (click)="createRaid(false)">Begin raid with Normal Key!</button>
       <button *ngIf=dungeon.active full ion-button round (click)="endRaid(dungeon)">End try!</button>

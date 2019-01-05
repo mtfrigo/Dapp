@@ -50,6 +50,28 @@
           </div>
         </ion-item>
 
+        <ion-item>
+          <ion-label stacked>Level</ion-label>
+          <ion-input type="number" formControlName="level"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!form.controls.level.valid && (form.controls.level.dirty || form.controls.level.touched)" color="danger">
+          <div [hidden]="!form.controls.level.errors.required">
+            O campo é obrigatório
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Coord</ion-label>
+          <ion-input type="text" formControlName="coord"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!form.controls.coord.valid && (form.controls.coord.dirty || form.controls.coord.touched)" color="danger">
+          <div [hidden]="!form.controls.coord.errors.required">
+            O campo é obrigatório
+          </div>
+        </ion-item>
+
         <div padding>
           <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()">Salvar</button>
         </div>

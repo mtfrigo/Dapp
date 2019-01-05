@@ -13,7 +13,7 @@ export class DungeonsProvider {
   }
 
   getAll() {
-    return this.db.list(this.PATH, ref => ref.orderByChild('name'))
+    return this.db.list(this.PATH, ref => ref.orderByChild('level'))
       .snapshotChanges()
       .pipe(
         map(changes => {
@@ -38,6 +38,8 @@ export class DungeonsProvider {
         this.db.list(this.PATH)
           .update(dungeon.key, { name: dungeon.name,
             difficulty: dungeon.difficulty,
+            level: dungeon.level,
+            coord: dungeon.coord,
             pic: dungeon.pic,
             active: dungeon.active,
             raidKey: dungeon.raidKey ? dungeon.raidKey : 'none',
@@ -48,6 +50,8 @@ export class DungeonsProvider {
         this.db.list(this.PATH)
           .push({ name: dungeon.name,
             difficulty: dungeon.difficulty,
+            level: dungeon.level,
+            coord: dungeon.coord,
             pic: dungeon.pic,
             active: dungeon.active})
           .then(() => resolve());
