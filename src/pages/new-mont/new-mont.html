@@ -1,0 +1,127 @@
+<!--
+  Generated template for the NewMontPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="preto">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      New Mont
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content no-padding *ngIf="capabilities && purities && monts">
+
+    <ion-list>
+      <ion-list-header>
+        Type
+      </ion-list-header>
+      <ion-item>
+
+          <ion-grid text-center id="cap-grid">
+            <ion-row>
+              <ion-col *ngFor="let m of topMounts1"(click)=setType(m.id)><img [src]=getMountImg(m.img) alt=""></ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col *ngFor="let m of topMounts2"(click)=setType(m.id)><img [src]=getMountImg(m.img) alt=""></ion-col>
+            </ion-row>
+          </ion-grid>
+
+      </ion-item>
+      <ion-item>
+        <ion-select [(ngModel)]="type">
+          <ion-option *ngFor="let mont of monts" [value]=mont.id>{{mont.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+
+      <ion-list-header>
+        Gender
+      </ion-list-header>
+
+      <ion-grid text-center id="cap-grid">
+        <ion-row>
+          <ion-col *ngFor="let g of genders" (click)=selectGender(g) [style.opacity]=getOpacity(g.value)><img [src]=g.img alt=""></ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+    </ion-list>
+
+    <ion-list>
+
+      <ion-list-header>
+        Caps
+      </ion-list-header>
+
+
+      <ion-grid text-center id="cap-grid">
+        <ion-row>
+          <ion-col  col-4 (click)=selectCap(capabilities[0]) [style.opacity]=getOpacity(capabilities[0].value) [style.background-color]=getCapBackgroundColor(capabilities[0].value)><img [src]=capabilities[0].img alt=""><p>Amorosa</p></ion-col>
+          <ion-col col-4 (click)=selectCap(capabilities[1]) [style.opacity]=getOpacity(capabilities[1].value) [style.background-color]=getCapBackgroundColor(capabilities[1].value)><img [src]=capabilities[1].img alt=""><p>Resistente</p></ion-col>
+          <ion-col col-4 (click)=selectCap(capabilities[2]) [style.opacity]=getOpacity(capabilities[2].value) [style.background-color]=getCapBackgroundColor(capabilities[2].value)><img [src]=capabilities[2].img alt=""><p>Incansavel</p></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4 (click)=selectCap(capabilities[3]) [style.opacity]=getOpacity(capabilities[3].value) [style.background-color]=getCapBackgroundColor(capabilities[3].value)><img [src]=capabilities[3].img alt=""><p>De carga</p></ion-col>
+          <ion-col col-4 (click)=selectCap(capabilities[4]) [style.opacity]=getOpacity(capabilities[4].value) [style.background-color]=getCapBackgroundColor(capabilities[4].value)><img [src]=capabilities[4].img alt=""><p>Gen. Predisposta</p></ion-col>
+          <ion-col col-4 (click)=selectCap(capabilities[5]) [style.opacity]=getOpacity(capabilities[5].value) [style.background-color]=getCapBackgroundColor(capabilities[5].value)><img [src]=capabilities[5].img alt=""><p>Repro</p></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4 (click)=selectCap(capabilities[6]) [style.opacity]=getOpacity(capabilities[6].value) [style.background-color]=getCapBackgroundColor(capabilities[6].value)><img [src]=capabilities[6].img alt=""><p>Inteligente</p></ion-col>
+          <ion-col col-4 (click)=selectCap(capabilities[7]) [style.opacity]=getOpacity(capabilities[7].value) [style.background-color]=getCapBackgroundColor(capabilities[7].value)><img [src]=capabilities[7].img alt=""><p>Camaleao</p></ion-col>
+          <ion-col col-4 (click)=selectCap(capabilities[8]) [style.opacity]=getOpacity(capabilities[8].value) [style.background-color]=getCapBackgroundColor(capabilities[8].value)><img [src]=capabilities[8].img alt=""><p>Precoce</p></ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+    </ion-list>
+
+    <ion-list>
+
+      <ion-list-header>
+        Purity
+      </ion-list-header>
+
+      <ion-grid text-center id="cap-grid">
+        <ion-row>
+          <ion-col *ngFor="let p of purities" (click)=selectPurity(p) [style.background-color]=getBackgroundColor(p.value)>{{p.name}}</ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-list>
+
+    <ion-list>
+
+      <ion-list-header>
+        Char
+      </ion-list-header>
+
+      <ion-grid text-center id="cap-grid">
+        <ion-row>
+          <ion-col *ngFor="let c of chars" (click)=selectChar(c) [style.opacity]=getOpacity(c.value)><img [src]=c.img alt=""></ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-list>
+
+    <ion-list>
+
+      <ion-item>
+        <ion-label>Active</ion-label>
+        <ion-toggle [(ngModel)]="active"></ion-toggle>
+      </ion-item>
+
+    </ion-list>
+
+    <button *ngIf="mont == undefined" ion-button full (click)=saveMont()>Save</button>
+    <button *ngIf="mont != undefined" ion-button full (click)=saveMont()>Update</button>
+
+</ion-content>

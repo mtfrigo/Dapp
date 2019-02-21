@@ -1,4 +1,4 @@
-<ion-menu [content]="content">
+<ion-menu [content]="content" id="menu1">
   <ion-header >
     <ion-toolbar color="preto" >
       <ion-title color="grey">Menu</ion-title>
@@ -8,11 +8,7 @@
   <ion-content class="menu-back">
     <ion-list >
 
-      <button menuClose text-center ion-item color="verde" (click)="login()">
-            <img [src]='getLoginPhoto()'>
-      </button>
-
-      <button menuClose text-center ion-item color="verde" *ngFor="let p of pages" (click)="openPage(p)">
+      <button menuClose text-center ion-item color="preto" *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}} <ion-icon item-right name="arrow-dropright"></ion-icon>
       </button>
 
@@ -20,5 +16,7 @@
   </ion-content>
 
 </ion-menu>
+
+
 
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

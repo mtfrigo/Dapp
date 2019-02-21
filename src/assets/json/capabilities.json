@@ -1,0 +1,58 @@
+{
+  "items" :[
+    {
+      "name": "Purities",
+      "items" :[
+        {
+          "name": "Amorosa",
+          "img": "assets/imgs/amorosa.png",
+          "value": 0
+        },
+        {
+          "name": "Resistente",
+          "img": "assets/imgs/resistente.png",
+          "value": 0
+        },
+        {
+          "name": "Incansavel",
+          "img": "assets/imgs/incansavel.png",
+          "value": 0
+        },
+        {
+          "name": "De Carga",
+          "img": "assets/imgs/loadbearer.png",
+          "value": 0
+        },
+        {
+          "name": "Predisposto Geneticamente",
+          "img": "assets/imgs/gen.png",
+          "value": 0
+        },
+        {
+          "name": "Reprodutora",
+          "img": "assets/imgs/repro.png",
+          "value": 0
+        },
+        {
+          "name": "Inteligente",
+          "img": "assets/imgs/int.png",
+          "value": 0
+        },
+        {
+          "name": "Camaleao",
+          "img": "assets/imgs/cama.png",
+          "value": 0
+        },
+        {
+          "name": "Precoce",
+          "img": "assets/imgs/precoce.png",
+          "value": 0
+        }
+
+      ]
+
+    }
+  ]
+
+
+}

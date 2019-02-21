@@ -1,0 +1,43 @@
+page-index {
+
+  .scroll-content {
+    background-color: #d3ea52;
+    color: blue
+  }
+
+  ion-card {
+    display: flex;
+    position: relative;
+    text-align: center;
+    align-items: center;
+
+
+    img {
+      height: 100px;
+      width: 100px;
+    }
+
+    #imgDungeon {
+      float: right;
+    }
+  }
+
+  .card-title {
+    font-size: 2.0em;
+    text-align: center;
+    width: 80%;
+    font-weight: bold;
+    color: black;
+    float: right;
+  }
+
+  .card-subtitle {
+    font-size: 1.0em;
+    position: absolute;
+    top: 52%;
+    width: 100%;
+    color: green;
+  }
+
+
+}

@@ -1,0 +1,47 @@
+{
+  "items" :[
+    {
+      "name": "Purities",
+      "items" :[
+        {
+          "id": 1,
+          "name": "1",
+          "value" : 1,
+          "img": "dourado.png"
+        }
+        ,
+        {
+          "id": 2,
+          "name": "2",
+          "value" : 0,
+          "img": "dourado.png"
+        }
+        ,
+        {
+          "id": 3,
+          "name": "3",
+          "value" : 0,
+          "img": "dourado.png"
+        }
+        ,
+        {
+          "id": 4,
+          "name": "Semi",
+          "value" : 0,
+          "img": "dourado.png"
+        }
+        ,
+        {
+          "id": 5,
+          "name": "Pure",
+          "value" : 0,
+          "img": "dourado.png"
+        }
+
+      ]
+
+    }
+  ]
+
+
+}

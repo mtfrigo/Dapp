@@ -1,4 +1,4 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
@@ -18,6 +18,10 @@ import { HttpModule } from '@angular/http';
 import { PipesModule } from '../pipes/pipes.module';
 import { DungeonsProvider } from '../providers/dungeons/dungeons';
 import { RaidsProvider } from '../providers/raids/raids';
+import { JsonsProvider } from '../providers/jsons/jsons';
+import { HttpClientModule } from '@angular/common/http';
+import { MontsProvider } from '../providers/monts/monts';
+import { UtilsProvider } from '../providers/utils/utils';
 
 
 
@@ -28,7 +32,7 @@ import { RaidsProvider } from '../providers/raids/raids';
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     PipesModule,
     ComponentsModule,
@@ -54,6 +58,10 @@ import { RaidsProvider } from '../providers/raids/raids';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DungeonsProvider,
     RaidsProvider,
+    JsonsProvider,
+    MontsProvider,
+    UtilsProvider,
   ]
 })
 export class AppModule {}
+enableProdMode();

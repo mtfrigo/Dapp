@@ -1,0 +1,212 @@
+{
+  "items" :[
+    {
+      "name": "Scrolls",
+      "items" :[
+        {
+          "id": 1,
+          "type": "Dourado",
+          "scale": "none",
+          "img": "dourado.png",
+          "kamas": 12000
+        }
+        ,
+        {
+          "id": 2,
+          "type": "Agilidade",
+          "scale": "Pequeno",
+          "img": "agilidade.png",
+          "kamas": 7500
+        }
+        ,
+        {
+          "id": 3,
+          "type": "Agilidade",
+          "scale": "Médio",
+          "img": "agilidade.png",
+          "kamas": 25000
+        }
+        ,
+        {
+          "id": 4,
+          "type": "Agilidade",
+          "scale": "Grande",
+          "img": "agilidade.png",
+          "kamas": 30000
+        }
+        ,
+        {
+          "id": 5,
+          "type": "Agilidade",
+          "scale": "Poderoso",
+          "img": "agilidade.png",
+          "kamas": 80000
+        }
+        ,
+        {
+          "id": 6,
+          "type": "Chance",
+          "scale": "Pequeno",
+          "img": "chance.png",
+          "kamas": 7500
+        }
+        ,
+        {
+          "id": 7,
+          "type": "Chance",
+          "scale": "Médio",
+          "img": "chance.png",
+          "kamas": 25000
+        }
+        ,
+        {
+          "id": 8,
+          "type": "Chance",
+          "scale": "Grande",
+          "img": "chance.png",
+          "kamas": 25000
+        }
+        ,
+        {
+          "id": 9,
+          "type": "Chance",
+          "scale": "Poderoso",
+          "img": "chance.png",
+          "kamas": 70000
+        }
+        ,
+        {
+          "id": 10,
+          "type": "Força",
+          "scale": "Pequeno",
+          "img": "forca.png",
+          "kamas": 7500
+        }
+        ,
+        {
+          "id": 11,
+          "type": "Força",
+          "scale": "Médio",
+          "img": "forca.png",
+          "kamas": 25000
+        }
+        ,
+        {
+          "id": 12,
+          "type": "Força",
+          "scale": "Grande",
+          "img": "forca.png",
+          "kamas": 50000
+        }
+        ,
+        {
+          "id": 13,
+          "type": "Força",
+          "scale": "Poderoso",
+          "img": "forca.png",
+          "kamas": 40000
+        }
+        ,
+        {
+          "id": 14,
+          "type": "Inteligência",
+          "scale": "Pequeno",
+          "img": "inteligencia.png",
+          "kamas": 7500
+        }
+        ,
+        {
+          "id": 15,
+          "type": "Inteligência",
+          "scale": "Médio",
+          "img": "inteligencia.png",
+          "kamas": 25000
+        }
+        ,
+        {
+          "id": 16,
+          "type": "Inteligência",
+          "scale": "Grande",
+          "img": "inteligencia.png",
+          "kamas": 50000
+        }
+        ,
+        {
+          "id": 17,
+          "type": "Inteligência",
+          "scale": "Poderoso",
+          "img": "inteligencia.png",
+          "kamas": 42000
+        }
+        ,
+        {
+          "id": 18,
+          "type": "Sabedoria",
+          "scale": "Pequeno",
+          "img": "sabedoria.png",
+          "kamas": 7500
+        }
+        ,
+        {
+          "id": 19,
+          "type": "Sabedoria",
+          "scale": "Médio",
+          "img": "sabedoria.png",
+          "kamas": 25000
+        }
+        ,
+        {
+          "id": 20,
+          "type": "Sabedoria",
+          "scale": "Grande",
+          "img": "sabedoria.png",
+          "kamas": 50000
+        }
+        ,
+        {
+          "id": 21,
+          "type": "Sabedoria",
+          "scale": "Poderoso",
+          "img": "sabedoria.png",
+          "kamas": 100000
+        }
+        ,
+        {
+          "id": 22,
+          "type": "Vitalidade",
+          "scale": "Pequeno",
+          "img": "vitalidade.png",
+          "kamas": 7500
+        }
+        ,
+        {
+          "id": 23,
+          "type": "Vitalidade",
+          "scale": "Médio",
+          "img": "vitalidade.png",
+          "kamas": 25000
+        }
+        ,
+        {
+          "id": 24,
+          "type": "Vitalidade",
+          "scale": "Grande",
+          "img": "vitalidade.png",
+          "kamas": 50000
+        }
+        ,
+        {
+          "id": 25,
+          "type": "Vitalidade",
+          "scale": "Poderoso",
+          "img": "vitalidade.png",
+          "kamas": 70000
+        }
+
+      ]
+
+    }
+  ]
+
+
+}

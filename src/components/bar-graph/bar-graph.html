@@ -1,0 +1,108 @@
+<!-- Generated template for the BarGraphComponent component -->
+<div style='height: 100%; width: 100%;'>
+    <svg *ngIf='x && y' [attr.width]="width" [attr.height]="height">
+        <g [attr.width]="barsWidth" [attr.height]="barsHeight" [attr.transform]="getBarsTransform()">
+
+            <rect *ngFor="let d of data; index as i"
+            class='bar'
+            opacity='0.8'
+            [attr.x]='0'
+            [attr.y]='y(d.id)'
+            [attr.height]='y.bandwidth()'
+            [attr.width]='getBarWidth(d.value)'
+            [attr.data]=d.valor
+            [attr.fill] = 'getBarColor(d)'
+          >
+          </rect>
+
+          <g [attr.transform] = "'translate(0, '+barsHeight+')'">
+            <line x1="-10" y1="0" [attr.x2]="barsWidth" y2="0" stroke="#000" stroke-width="2"  />
+              <g *ngFor="let d of data">
+                  <text
+                  class='axis-title'
+                  fill="#000"
+                  [attr.y]='(y(d.id)) - barsHeight'
+                  [attr.x]='0'
+                  dx=-1em
+                  dy=15
+                  font-size='10'
+                  text-anchor='middle'
+                  text='Frequency'
+                >
+                  {{ d.id }}
+                </text>
+
+                <text
+                  class='axis-title'
+                  fill="#000"
+                  [attr.y]='(y(d.id)) - barsHeight'
+                  [attr.x]='barsWidth-5'
+                  dy=-0.5em
+                  font-size='10'
+                  dy=15
+                  text-anchor='end'
+                  text='Frequency'
+                  text-align= 'right'
+                >
+                  {{ getTypeName(d.id) }}
+                </text>
+
+                <line
+                  stroke-width='1'
+                  stroke="#000"
+                  opacity=1
+                  [attr.x1]="0"
+                  [attr.x2]="-3"
+                  [attr.y1]='-(y(d.id)+y.bandwidth()/2)'
+                  [attr.y2]='-(y(d.id)+y.bandwidth()/2)'
+                >
+                </line>
+              </g>
+          </g>
+
+          <g>
+            <line x1="0" y1="0" x2="0" [attr.y2]="barsHeight+10" stroke="#000" stroke-width="2"/>
+            <g *ngFor="let tick of xTicksArray; index as i"
+            >
+              <text
+                fill="#000"
+                [attr.x]="xTicksScale(tick)"
+                [attr.y]="barsHeight+10"
+                dy=0.8em
+                font-size="15"
+                text-anchor='middle'
+                text='Frequency'
+              >
+                {{ getTickXValue(d,i) }}
+              </text>
+
+              <line
+                  stroke-width='1'
+                  stroke="#000"
+                  opacity=1
+                  [attr.x1]="xTicksScale(tick)"
+                  [attr.x2]="xTicksScale(tick)"
+                  [attr.y1]='barsHeight'
+                  [attr.y2]="barsHeight+5"
+                >
+                </line>
+
+              <line
+                  stroke-width='1'
+                  stroke="#000"
+                  opacity=0.2
+                  [attr.x1]="xTicksScale(tick)"
+                  [attr.x2]="xTicksScale(tick)"
+                  [attr.y1]='0'
+                  [attr.y2]="barsHeight"
+                >
+                </line>
+
+            </g>
+
+          </g>
+
+
+        </g>
+    </svg>
+  </div>

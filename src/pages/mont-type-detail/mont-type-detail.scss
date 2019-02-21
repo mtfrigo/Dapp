@@ -1,0 +1,33 @@
+page-mont-type-detail {
+
+  .mont-profile {
+    width: 100%;
+    background-position: center center;
+    background-size: auto;
+    background-repeat: no-repeat;
+    height: 250px;
+  }
+
+  .mont-detail {
+    width: 100%;
+    background: white;
+    position: absolute;
+    line-height: 30px;
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: 300;
+  }
+
+  .value {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  #scroll-img {
+    width: 80px;
+    height: 80px;
+  }
+
+}

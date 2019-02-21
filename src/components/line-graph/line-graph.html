@@ -1,0 +1,85 @@
+<div id='linhas'>
+  <svg *ngIf='x && y' [attr.width]="width" [attr.height]="height">
+      <g [attr.width]="linesWidth" [attr.height]="linesHeight" [attr.transform]="getLinesTransform()">
+        <path *ngFor="let d of data; index as i"
+        class='line'
+        opacity='1'
+        [attr.d]='linePath(d)'
+        stroke-width= '2'
+        fill="none"
+        stroke='red'>
+        </path>
+
+        <g class='axis--x'>
+          <line x1="-10" [attr.y1]="linesHeight" [attr.x2]="linesWidth" [attr.y2]="linesHeight" stroke="#000" stroke-width="2"  />
+          <g *ngFor="let d of keys; index as i"
+            class='tick'
+            [attr.transform]='getTickX(d, i)'
+          >
+          <text
+            class='axis-title'
+            fill="#000"
+            x='9'
+            dy="2.1em"
+            text='Frequency'
+            text-anchor='end'
+            font-size='8px'
+          >
+            {{ keyMap[d] }}
+          </text>
+          <text
+            class='axis-title'
+            fill="#000"
+            x='9'
+            dy="3.5em"
+            text='Frequency'
+            text-anchor='end'
+            font-size='8px'
+          >
+            {{data[0][i]['value']/1000}} KK
+          </text>
+
+          </g>
+        </g>
+
+
+        <g class='axis--y'>
+          <line x1="0" y1="-10" x2="0" [attr.y2]="linesHeight+10" stroke="#000" stroke-width="2"/>
+          <g *ngFor="let tick of yTicksArray; index as i"
+            class='tick'
+            [attr.transform]='getTickY(tick, i)'
+          >
+            <text
+              class='axis-title'
+              fill="#000"
+              x=-12
+              dy=0.35em
+              text-anchor='end'
+              text='Frequency'
+              font-size='8px'
+            >
+              {{ getTickYValue(tick,i)}}
+            </text>
+
+            <line
+              stroke-width='1'
+              stroke="#000"
+              opacity=1
+              x1='-10'
+              x2="0"
+            >
+            </line>
+
+          </g>
+        </g>
+      </g>
+  </svg>
+
+  <ion-grid text-center>
+    <ion-row *ngFor="let d of data[0]; index as  i">
+      <ion-col >{{keyMap[d.day]}}</ion-col>
+      <ion-col >{{d.value/1000}} KK</ion-col>
+    </ion-row>
+  </ion-grid>
+
+</div>
