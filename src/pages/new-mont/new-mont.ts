@@ -323,9 +323,13 @@ export class NewMontPage {
 
   getTopMonts(monts)
   {
+    console.log("montss")
+    console.log(monts)
     this.topMounts1 = [];
     this.topMounts2 = [];
-    let mountsCounter = {};
+   /* let mountsCounter = {};
+
+    if(monts){
 
     monts.forEach(mont => {
       if(mont.type in mountsCounter)
@@ -369,7 +373,26 @@ export class NewMontPage {
       });
       count++;
 
-    })
+    })*/
+
+    this.topMounts1 = [
+      {id: 47, name: "Índigo", generation: 3, img: "indigo.png", scrollId: 6},
+      {id: 63, name: "Ruivo", generation: 1, img: "ruivo.png", scrollId: 1},
+      {id: 53, name: "Marfim", generation: 7, img: "marfim.png", scrollId: 8},
+      {id: 15, name: "Amêndoa e Esmeralda", generation: 10, img: "amendoaeesmeralda.png", scrollId: 25},
+      {id: 34, name: "Ébano e Esmeralda", generation: 10, img: "ebanoeesmeralda.png", scrollId: 5}
+    ]
+
+    this.topMounts2 = [
+      {id: 65, name: "Turquesa", generation: 7, img: "turquesa.png", scrollId: 4},
+      {id: 41, name: "Esmeralda", generation: 9, img: "esmeralda.png", scrollId: 13},
+      {id: 12, name: "Amêndoa", generation: 1, img: "amendoa.png", scrollId: 1},
+      {id: 1, name: "Ameixa", generation: 9, img: "ameixa.png", scrollId: 17},
+      {id: 61, name: "Púrpura", generation: 5, img: "purpura.png", scrollId: 10}
+    ]
+
+
+
 
 
   }

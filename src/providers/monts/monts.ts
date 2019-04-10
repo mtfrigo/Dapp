@@ -17,6 +17,7 @@ export class MontsProvider {
   constructor(private db: AngularFireDatabase) {
   }
 
+
   getAll() {
     return this.db.list(this.PATH, ref => ref)
       .snapshotChanges()
